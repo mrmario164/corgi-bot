@@ -3,8 +3,6 @@
 import discord
 from discord.ext import commands
 import asyncio
-from itertools import cycle
-import random
 
 client = commands.Bot(command_prefix = "c!")
 client.remove_command('help')
@@ -18,8 +16,7 @@ async def change_status():
     messages = cycle(statusmsg)
 
     while not client.is_closed:
-        current_status = next(messages)
-        await client.change_presence(game=discord.Game(name=current_status))
+        await client.change_presence(game=discord.Game(name="c!help - Get to know server commands with this one!"))
         await asyncio.sleep(4)
 
 @client.event
