@@ -41,7 +41,7 @@ async def help(ctx):
     await client.say("I've sent you a DM containing everything :ok_hand:")
 
 @client.command(pass_context=True)
-async def photo(ctx):
+async def corgi_image(ctx):
     image = random.shuffle(corgiImages)[0]
     await client.say("Look at this cute corgi photo! :heart_eyes:")
     await client.say(image)
