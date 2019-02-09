@@ -9,11 +9,8 @@ client.remove_command('help')
 
 TOKEN = 'NTQzNTY3NjUxMTMwMzEwNjY2.Dz-e-w.lKqjY0UFpJM--4llZhZA3RKTjbY'
 
-statusmsg = ["c!help - Get to know server commands with this one!"]
-
 async def change_status():
     await client.wait_until_ready()
-    messages = cycle(statusmsg)
 
     while not client.is_closed:
         await client.change_presence(game=discord.Game(name="c!help - Get to know server commands with this one!"))
