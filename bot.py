@@ -35,13 +35,13 @@ async def help(ctx):
         colour = discord.Colour.blue()
     )
     embed.set_author(name='Corgi-Bot - Help and Documentation')
-    embed.add_field(name='!help', value='Tells you about all the commands', inline=False)
-    embed.add_field(name='!photo', value='Posts a cute photo of a corgi', inline=False)
+    embed.add_field(name='c!help', value='Tells you about all the commands', inline=False)
+    embed.add_field(name='c!picture', value='Posts a cute photo of a corgi', inline=False)
     await client.send_message(author, embed=embed)
     await client.say("I've sent you a DM containing everything :ok_hand:")
 
 @client.command(pass_context=True)
-async def corgi_image(ctx):
+async def picture(ctx):
     image = random.shuffle(corgiImages)[0]
     await client.say("Look at this cute corgi photo! :heart_eyes:")
     await client.say(image)
