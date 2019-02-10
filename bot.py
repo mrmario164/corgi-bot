@@ -52,17 +52,22 @@ async def on_ready():
     print("I'm a corgi!! Ready to go!")
 
 @client.command(pass_context=True)
-async def play_dory_episode(ctx, vid):
-    if int(vid) > 0 and int(vid) < 8:
-        await client.say("WOOF! You chose video number " + vid)
-        await client.say(corgiDoryVids[int(vid)-1] + " :laughing:")
-    elif int(vid) < 0:
-        await client.say("WOOF! I'm only a Corgi! I can't play a number with a - in front of it!!")
-    elif int(vid) > 8:
-        await client.say("WOOF! I'm only a Corgi! I can't play a number that's that big!!")
-    elif vid.lower() == 'trailer':
-        await client.say("WOOF! You chose to watch the trailer!")
-        await client.say(corgiDoryVids[7] + " :laughing:")
+async def play(ctx, tp, vid):
+    if tp.lower() == 'dory':
+        if int(vid) > 0 and int(vid) < 8:
+            await client.say("WOOF! You chose video number " + vid)
+            await client.say(corgiDoryVids[int(vid)-1] + " :laughing:")
+        elif int(vid) < 0:
+            await client.say("WOOF! I'm only a Corgi! I can't play a number with a - in front of it!!")
+        elif int(vid) > 8:
+            await client.say("WOOF! I'm only a Corgi! I can't play a number that's that big!!")
+        elif vid.lower() == 'trailer':
+            await client.say("WOOF! You chose to watch the trailer!")
+            await client.say(corgiDoryVids[7] + " :laughing:")
+        elif vid == None:
+            await client.say("WOOF! You need to tell me what episode you want to watch!")
+    elif tp == None:
+        await client.say("WOOF! You need to tell me what you want to watch!")
 
 @client.command(pass_context=True)
 async def help(ctx):
@@ -74,7 +79,7 @@ async def help(ctx):
     embed.add_field(name='c!help', value='Tells you about all the commands', inline=False)
     embed.add_field(name='c!corgi_picture', value='Posts a cute photo of a corgi', inline=False)
     embed.add_field(name='c!wiki', value='View my Corgi wiki', inline=False)
-    embed.add_field(name='c!play_dory_episode', value="Plays an episode from 'Dory's in the Picture'", inline=False)
+    embed.add_field(name='c!play', value="Plays an episode of Corgi", inline=False)
     await client.send_message(author, embed=embed)
     await client.say("I've sent you a DM containing everything :ok_hand:")
 
