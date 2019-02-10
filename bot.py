@@ -47,7 +47,7 @@ async def help(ctx):
     )
     embed.set_author(name='Corgi-Bot - Help and Documentation')
     embed.add_field(name='c!help', value='Tells you about all the commands', inline=False)
-    embed.add_field(name='c!photo', value='Posts a cute photo of a corgi', inline=False)
+    embed.add_field(name='c!picture', value='Posts a cute photo of a corgi', inline=False)
     embed.add_field(name='c!wiki', value='View my Corgi wiki', inline=False)
     await client.send_message(author, embed=embed)
     await client.say("I've sent you a DM containing everything :ok_hand:")
