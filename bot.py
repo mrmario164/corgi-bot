@@ -60,11 +60,6 @@ async def update_berry_count(users, user, amount):
     users[user.id]['berries'] += amount
 
 @client.command(pass_context=True)
-async def change_berry_emoji(ctx, emoji):
-    await client.say('Berry emoji has been changed from ' + berryEmoji + ' to ' + emoji + '. YUMMY!')
-    berryEmoji = emoji
-
-@client.command(pass_context=True)
 async def add_berries(ctx, member, amount):
     try:
         with open('userdata.json', 'r') as f:
@@ -89,7 +84,6 @@ async def help(ctx):
     embed.add_field(name='c!corgi_picture', value='Posts a cute photo of a corgi', inline=False)
     embed.add_field(name='c!wiki', value='View my Corgi wiki', inline=False)
     embed.add_field(name='c!add_berries', value='Add berries to somebody', inline=False)
-    embed.add_field(name='c!change_berry_emoji', value='Change the berry emoji', inline=False)
     await client.send_message(author, embed=embed)
     await client.say("I've sent you a DM containing everything :ok_hand:")
 
