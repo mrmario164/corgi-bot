@@ -42,7 +42,7 @@ async def help(ctx):
 
 @client.command(pass_context=True)
 async def picture(ctx):
-    image = random.shuffle(corgiImages)[0]
+    image = random.choice(corgiImages)
     await client.say("Look at this cute corgi photo! :heart_eyes:")
     await client.say(image)
 
