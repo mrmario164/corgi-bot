@@ -61,7 +61,7 @@ async def play(ctx, tp, vid):
             await client.say("WOOF! I'm only a Corgi! I can't play a number with a - in front of it!!")
         elif int(vid) > 8:
             await client.say("WOOF! I'm only a Corgi! I can't play a number that's that big!!")
-        elif vid.lower() == 'trailer':
+        elif str(vid).lower() == 'trailer':
             await client.say("WOOF! You chose to watch the trailer!")
             await client.say(corgiDoryVids[7] + " :laughing:")
         elif vid == None:
