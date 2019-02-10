@@ -4,11 +4,13 @@ import discord
 from discord.ext import commands
 import asyncio
 import random
+import json
 
 client = commands.Bot(command_prefix = "c!")
 client.remove_command('help')
 
 TOKEN = 'NTQzNTY3NjUxMTMwMzEwNjY2.Dz-e-w.lKqjY0UFpJM--4llZhZA3RKTjbY'
+berryEmoji = ':strawberry:'
 
 corgiImages = [
     'https://www.rover.com/blog/wp-content/uploads/2014/06/dogbutt.jpg',
@@ -39,6 +41,43 @@ async def change_status():
 async def on_ready():
     print("I'm a corgi!! Ready to go!")
 
+@client.event
+async def on_member_join(member):
+    with open('userdata.json', 'r') as f:
+        users = json.load(f)
+
+    await update_data(users, member)
+
+    with open('userdata.json', 'w') as f:
+        json.dump(users, f)
+
+async def update_data(users, user):
+    if not user.id in users:
+        users[user.id] = {}
+        users[user.id]['berries'] = 0
+
+async def update_berry_count(users, user, amount):
+    users[user.id]['berries'] += amount
+
+@client.command(pass_context=True)
+async def change_berry_emoji(ctx, emoji):
+    await client.say('Berry emoji has been changed from ' + berryEmoji + ' to ' + emoji + '. YUMMY!')
+    berryEmoji = emoji
+
+@client.command(pass_context=True)
+async def add_berries(ctx, member, amount):
+    try:
+        with open('userdata.json', 'r') as f:
+            users = json.load(f)
+
+        await update_berry_count(users, member, amount)
+
+        with open('userdata.json', 'w') as f:
+            json.dump(users, f)
+        await client.say(amount + berryEmoji + ' have been added to ' + member + "'s balance.")
+    except:
+        await client.say("WOOF! You typed something incorrectly. Make sure its *c!add_berries @name#1234 amount*!")
+
 @client.command(pass_context=True)
 async def help(ctx):
     author = ctx.message.author
@@ -47,13 +86,15 @@ async def help(ctx):
     )
     embed.set_author(name='Corgi-Bot - Help and Documentation')
     embed.add_field(name='c!help', value='Tells you about all the commands', inline=False)
-    embed.add_field(name='c!picture', value='Posts a cute photo of a corgi', inline=False)
+    embed.add_field(name='c!corgi_picture', value='Posts a cute photo of a corgi', inline=False)
     embed.add_field(name='c!wiki', value='View my Corgi wiki', inline=False)
+    embed.add_field(name='c!add_berries', value='Add berries to somebody', inline=False)
+    embed.add_field(name='c!change_berry_emoji', value='Change the berry emoji', inline=False)
     await client.send_message(author, embed=embed)
     await client.say("I've sent you a DM containing everything :ok_hand:")
 
 @client.command(pass_context=True)
-async def picture(ctx):
+async def corgi_picture(ctx):
     image = random.choice(corgiImages)
     await client.say("Look at this cute corgi photo! :heart_eyes:")
     await client.say(image)
