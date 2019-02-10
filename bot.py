@@ -54,7 +54,7 @@ async def on_ready():
 @client.command(pass_context=True)
 async def play_dory_episode(ctx, vid):
     if int(vid) > 0 and int(vid) < 8:
-        await client.say("WOOF! You chose video number " + num)
+        await client.say("WOOF! You chose video number " + vid)
         await client.say(corgiDoryVids[int(vid)-1] + " :laughing:")
     elif int(vid) < 0:
         await client.say("WOOF! I'm only a Corgi! I can't play a number with a - in front of it!!")
@@ -74,6 +74,7 @@ async def help(ctx):
     embed.add_field(name='c!help', value='Tells you about all the commands', inline=False)
     embed.add_field(name='c!corgi_picture', value='Posts a cute photo of a corgi', inline=False)
     embed.add_field(name='c!wiki', value='View my Corgi wiki', inline=False)
+    embed.add_field(name='c!play_dory_episode', value="Plays an episode from 'Dory's in the Picture'", inline=False)
     await client.send_message(author, embed=embed)
     await client.say("I've sent you a DM containing everything :ok_hand:")
 
