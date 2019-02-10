@@ -29,6 +29,17 @@ corgiImages = [
     'https://cdn.discordapp.com/attachments/507502888902328321/543976091405254658/images-3.jpg'
 ]
 
+corgiDoryVids = [
+    'https://photos.app.goo.gl/KpXA3nXQs2NBQZWi6',
+    'https://photos.app.goo.gl/zz7p6pkojbApsGK16',
+    'https://photos.app.goo.gl/u9Wnen24A3prTZNk9',
+    'https://photos.app.goo.gl/gQiLJWGokaR6JSip8',
+    'https://photos.app.goo.gl/ZAr2L4AhmQu5ZxT4A',
+    'https://photos.app.goo.gl/DJDg86YXDBhxabst5',
+    'https://photos.app.goo.gl/Smu96zPLmR6tjzg27',
+    'https://photos.app.goo.gl/KeXzJrrSXU2j4Zsw9'
+]
+
 async def change_status():
     await client.wait_until_ready()
 
@@ -39,6 +50,19 @@ async def change_status():
 @client.event
 async def on_ready():
     print("I'm a corgi!! Ready to go!")
+
+@client.command(pass_context=True)
+async def play_dory_episode(ctx, vid):
+    if int(vid) > 0 and int(vid) < 8:
+        await client.say("WOOF! You chose video number " + num)
+        await client.say(corgiDoryVids[int(vid)-1] + " :laughing:")
+    elif int(vid) < 0:
+        await client.say("WOOF! I'm only a Corgi! I can't play a number with a - in front of it!!")
+    elif int(vid) > 8:
+        await client.say("WOOF! I'm only a Corgi! I can't play a number that's that big!!")
+    elif vid.lower() == 'trailer':
+        await client.say("WOOF! You chose to watch the trailer!")
+        await client.say(corgiDoryVids[7] + " :laughing:")
 
 @client.command(pass_context=True)
 async def help(ctx):
