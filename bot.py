@@ -54,16 +54,16 @@ async def on_ready():
 @client.command(pass_context=True)
 async def play(ctx, tp, vid):
     if tp.lower() == 'dory':
-        if int(vid) > 0 and int(vid) < 8:
+        if vid.lower() == 'trailer':
+            await client.say("WOOF! You chose to watch the trailer!")
+            await client.say(corgiDoryVids[7] + " :laughing:")
+        elif int(vid) > 0 and int(vid) < 8:
             await client.say("WOOF! You chose video number " + vid)
             await client.say(corgiDoryVids[int(vid)-1] + " :laughing:")
         elif int(vid) < 0:
             await client.say("WOOF! I'm only a Corgi! I can't play a number with a - in front of it!!")
         elif int(vid) > 8:
             await client.say("WOOF! I'm only a Corgi! I can't play a number that's that big!!")
-        elif str(vid).lower() == 'trailer':
-            await client.say("WOOF! You chose to watch the trailer!")
-            await client.say(corgiDoryVids[7] + " :laughing:")
         elif vid == None:
             await client.say("WOOF! You need to tell me what episode you want to watch!")
         else:
