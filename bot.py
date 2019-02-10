@@ -64,11 +64,11 @@ async def play(ctx, tp, vid):
         elif vid.lower() == 'trailer':
             await client.say("WOOF! You chose to watch the trailer!")
             await client.say(corgiDoryVids[7] + " :laughing:")
+        elif vid == None:
+            await client.say("WOOF! You need to tell me what episode you want to watch!")
         else:
             await client.say("WOOF! I can't play that!")
     elif tp == None:
-        await client.say("WOOF! You need to tell me what you want to watch!")
-    elif not tp == None and vid == None:
         await client.say("WOOF! You need to tell me what you want to watch!")
     else:
         await client.say("WOOF! I can't play that!")
