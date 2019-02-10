@@ -58,25 +58,25 @@ async def picture(ctx):
     await client.say(image)
 
 @client.command(pass_context=True)
-async def wiki(ctx, char=None):
+async def wiki(ctx, char):
     if char == None:
         await client.say("WOOF!! We do have a wiki, but to use it supply an arguement after 'c!wiki'.")
-        return
-    char2 = char.lower()
-    if char2 == 'corgi':
-        await client.say("Corgi is the one of the main characters of the corgi videos. Corgi is quite stupid, but he is very funny.")
-    elif char2 == 'doby':
-        await client.say("Doby is the one of the main characters of the corgi videos. Doby is obsessed with spray paint, but he loves adventuring.")
-    elif char2 == 'patches':
-        await client.say("Patches is the one of the main characters of the corgi videos. Patches is crazy and enjoys having fun.")
-    elif char2 == 'husky':
-        await client.say("Husky is the one of the main characters of the corgi videos. Husky is smart, but also quite shy.")
-    elif char2 == 'scruff':
-        await client.say("Scruff is the one of the main characters of the corgi videos. Scruff is somewhat smart and the most sensible of the main characters.")
-    elif char2 == 'dory':
-        await client.say("Dory is the antagonist in the 'Dory's in the Picture' series. Dory is mean to and hates Corgi and his friends.")
     else:
-        await client.say("'" + char + "' is not in my wiki yet, or is being added. Check back soon!")
+        char2 = char.lower()
+        if char2 == 'corgi':
+            await client.say("Corgi is the one of the main characters of the corgi videos. Corgi is quite stupid, but he is very funny.")
+        elif char2 == 'doby':
+            await client.say("Doby is the one of the main characters of the corgi videos. Doby is obsessed with spray paint, but he loves adventuring.")
+        elif char2 == 'patches':
+            await client.say("Patches is the one of the main characters of the corgi videos. Patches is crazy and enjoys having fun.")
+        elif char2 == 'husky':
+            await client.say("Husky is the one of the main characters of the corgi videos. Husky is smart, but also quite shy.")
+        elif char2 == 'scruff':
+            await client.say("Scruff is the one of the main characters of the corgi videos. Scruff is somewhat smart and the most sensible of the main characters.")
+        elif char2 == 'dory':
+            await client.say("Dory is the antagonist in the 'Dory's in the Picture' series. Dory is mean to and hates Corgi and his friends.")
+        else:
+            await client.say("'" + char + "' is not in my wiki yet, or is being added. Check back soon!")
 
 client.loop.create_task(change_status())
 client.run(TOKEN)
