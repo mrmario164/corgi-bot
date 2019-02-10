@@ -58,7 +58,10 @@ async def picture(ctx):
     await client.say(image)
 
 @client.command(pass_context=True)
-async def wiki(ctx, char):
+async def wiki(ctx, char=None):
+    if char == None:
+        await client.say("WOOF!! We do have a wiki, but to use it supply an arguement after 'c!wiki'.")
+        return
     char2 = char.lower()
     if char2 == 'corgi':
         await client.say("Corgi is the one of the main characters of the corgi videos. Corgi is quite stupid, but he is very funny.")
