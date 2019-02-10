@@ -46,8 +46,9 @@ async def help(ctx):
         colour = discord.Colour.blue()
     )
     embed.set_author(name='Corgi-Bot - Help and Documentation')
-    embed.add_field(name='!help', value='Tells you about all the commands', inline=False)
-    embed.add_field(name='!photo', value='Posts a cute photo of a corgi', inline=False)
+    embed.add_field(name='c!help', value='Tells you about all the commands', inline=False)
+    embed.add_field(name='c!photo', value='Posts a cute photo of a corgi', inline=False)
+    embed.add_field(name='c!wiki', value='View my Corgi wiki', inline=False)
     await client.send_message(author, embed=embed)
     await client.say("I've sent you a DM containing everything :ok_hand:")
 
@@ -60,7 +61,7 @@ async def picture(ctx):
 @client.command(pass_context=True)
 async def wiki(ctx, char):
     if char == None:
-        await client.say("WOOF!! We do have a wiki, but to use it supply an arguement after 'c!wiki'.")
+        await client.say("WOOF!! I do have a wiki, but to use it supply an arguement after 'c!wiki'.")
     else:
         char2 = char.lower()
         if char2 == 'corgi':
