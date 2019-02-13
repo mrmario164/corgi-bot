@@ -70,8 +70,6 @@ async def play(ctx, tp, vid):
             await client.say("WOOF! I can't play that!")
     elif tp == None:
         await client.say("WOOF! You need to tell me what you want to watch!")
-    elif vid == None:
-        await client.say("WOOF! You need to tell me what episode you want to watch!")
     else:
         await client.say("WOOF! I can't play that!")
 
@@ -113,6 +111,10 @@ async def wiki(ctx, char):
             await client.say("Scruff is the one of the main characters of the corgi videos. Scruff is somewhat smart and the most sensible of the main characters.")
         elif char2 == 'dory':
             await client.say("Dory is the antagonist in the 'Dory's in the Picture' series. Dory is mean to and hates Corgi and his friends.")
+        elif char2 == 'beer':
+            await client.say("Corgi's favourite drink.")
+        elif char2 == 'sara':
+            await client.say("Sara was meant to be a character in the Rulers of the Earth series. Unfortunatly, this series was never released.")
         else:
             await client.say("'" + char + "' is not in my wiki yet, or is being added. Check back soon!")
 
